@@ -40,7 +40,7 @@ function deepDup(arr) {
 function bSearch(sortedBoi, target) {
   if (sortedBoi[0] == target) return 0;
   if (sortedBoi.length == 1) return -1;
-  let midIdx = Math.floor((sortedBoi.length - 1) / 2);
+  let midIdx = Math.floor((sortedBoi.length) / 2);
   if (sortedBoi[midIdx] > target) {
     return bSearch(sortedBoi.slice(0, midIdx), target);
   } else if (sortedBoi[midIdx] == target) {
@@ -52,4 +52,25 @@ function bSearch(sortedBoi, target) {
   }
 }
 
-function
+function mergeSort(arr) {
+  if (arr.length == 1) return arr;
+  let mid = Math.floor(arr.length / 2);
+  const left = mergeSort(arr.slice(0, mid));
+  const right = mergeSort(arr.slice(mid));
+  return merge(left, right)
+}
+
+function merge(left, right) {
+  let merged = [];
+
+  while(left.length > 0 && right.length > 0) {
+    if (left[0] < right[0]) {
+      merged.push(left.shift());
+    } else if (left[0] >= right[0]) {
+      merged.push(right.shift());
+    }
+  }
+  return merged.concat(left, right);
+}
+
+// need to do subSets later... moving on to class work 
