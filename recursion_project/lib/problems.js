@@ -16,6 +16,7 @@
 // lucasNumber(3)   // => 4
 // lucasNumber(5)   // => 11
 // lucasNumber(9)   // => 76
+
 function lucasNumber(n, memo = { 0: 2, 1: 1 }) {
   if (n < 2) return memo[n];
   if (n in memo) {
@@ -37,6 +38,7 @@ function lucasNumber(n, memo = { 0: 2, 1: 1 }) {
 // sumArray([5])            // => 5
 // sumArray([5, 2])         // => 7
 // sumArray([4, 10, -1, 2]) // => 15
+
 function sumArray(array) {
   if (array.length === 0) return 0;
   return array[0] + sumArray(array.slice(1));
@@ -53,6 +55,7 @@ function sumArray(array) {
 // reverseString("c")           // => "c"
 // reverseString("internet")    // => "tenretni"
 // reverseString("friends")     // => "sdneirf"
+
 function reverseString(str) {
   if (str.length === 0) return str;
   return str[str.length - 1] + reverseString(str.slice(0, str.length - 1));
@@ -74,6 +77,7 @@ function reverseString(str) {
 // pow(2, 5)    // => 32
 // pow(3, 4)    // => 81
 // pow(2, -5)   // => 0.03125
+
 function pow(base, exponent) {
   if (exponent === 0) return 1;
   if (exponent > 0) {
@@ -111,6 +115,7 @@ function pow(base, exponent) {
 //     1-dimensional array: ['some data']
 //     2-dimensional array: [['some data']]
 //     3-dimensional array: [[['some data']]]
+
 function flatten(data) {
   if (!Array.isArray(data)) return [ data ];
   let flattened = [];
@@ -157,7 +162,18 @@ function flatten(data) {
 // fileFinder(desktop, 'app_academy_logo.svg');     // => true
 // fileFinder(desktop, 'everlong.flac');            // => true
 // fileFinder(desktop, 'sequoia.jpeg');             // => false
-function fileFinder(directories, targetFile) {}
+
+
+function fileFinder(directories, targetFile) {
+  for (let key in directories) {
+    if (key === targetFile) {
+      return true;
+    } else { 
+      fileFinder(directories[key], targetFile);
+    }
+  }
+  return false;
+}
 
 // Write another function, pathFinder(directories, targetFile), that returns the path that contains the targetFile.
 // If the targetFile is not found in the directories, then return null.
