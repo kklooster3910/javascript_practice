@@ -166,11 +166,9 @@ function flatten(data) {
 
 function fileFinder(directories, targetFile) {
   for (let key in directories) {
-    if (key === targetFile) {
+    if (key === targetFile || fileFinder(directories[key], targetFile)) {
       return true;
-    } else { 
-      fileFinder(directories[key], targetFile);
-    }
+    } 
   }
   return false;
 }
@@ -184,7 +182,20 @@ function fileFinder(directories, targetFile) {
 // pathFinder(desktop, 'trixie_lou.jpeg'));     // => '/images/pets/trixie_lou.jpeg'
 // pathFinder(desktop, 'everlong.flac'));       // => '/music/genres/rock/everlong.flac'
 // pathFinder(desktop, 'honeybadger.png'));     // => null
-function pathFinder(directories, targetFile) {}
+function pathFinder(directories, targetFile) {
+  for (let key in directories) {
+    if (key === targetFile){
+      return '/' + targetFile;
+    }
+
+    let subDir = directories[key];
+    let temp = pathFinder(subDir, targetFile);
+    if (temp !== null) {
+      return key + temp;
+    }
+  }
+  return null;
+}
 
 module.exports = {
   lucasNumber,
