@@ -54,8 +54,6 @@ function minChange(coins, amount, memo = {}) {
 // console.log(minChange([1, 5, 10, 25], 15));
 // console.log(minChange([1, 5, 10, 25], 100));
 
-
-
 // Given a string containing just the characters ‘(’, ‘)’, ‘{’, ‘}’, ‘[’ and ‘]’, determine if the input string is valid.
 // An input string is valid if:
 // Open brackets must be closed by the same type of brackets.
@@ -78,14 +76,13 @@ function minChange(coins, amount, memo = {}) {
 // Input: “{[]}”
 // Output: true
 
-
-/// ()()()()()()()(())((()()) => counter++ or counter-- 
+/// ()()()()()()()(())((()()) => counter++ or counter--
 
 // Input: “([)]”
 
 const isValidBrackets = string => {
-  string = string.split('');
-  let pCounter = 0;  // ()
+  string = string.split("");
+  let pCounter = 0; // ()
   let curlyCounter = 0;
   let squareCounter = 0; // []
   // let mostRecent;
@@ -93,30 +90,30 @@ const isValidBrackets = string => {
   for (let i = 0; i < string.length; i++) {
     let currentCharacter = string[i];
     let bracketToClose;
-    switch(currentCharacter) {
-      case '(': 
+    switch (currentCharacter) {
+      case "(":
         pCounter++;
-        mostRecentQue.push('parenthesis');
+        mostRecentQue.push("parenthesis");
         break;
-      case ')':
+      case ")":
         bracketToClose = mostRecentQue.pop();
-        if (bracketToClose !== 'parenthesis') return false;
+        if (bracketToClose !== "parenthesis") return false;
         pCounter--;
         break;
-      case '{':
+      case "{":
         curlyCounter++;
-        mostRecentQue.push('curlyBoi');
+        mostRecentQue.push("curlyBoi");
         break;
-      case '}':
+      case "}":
         bracketToClose = mostRecentQue.pop();
-        if (bracketToClose !== 'curlyBoi') return false;
+        if (bracketToClose !== "curlyBoi") return false;
         curlyCounter--;
         break;
-      case '[':
+      case "[":
         squareCounter++;
-        mostRecentQue.push('squareBoi');
+        mostRecentQue.push("squareBoi");
         break;
-      case ']':
+      case "]":
         bracketToClose = mostRecentQue.pop();
         if (bracketToClose !== "squareBoi") return false;
         squareCounter--;
@@ -129,7 +126,6 @@ const isValidBrackets = string => {
 
   if (pCounter != 0 || curlyCounter != 0 || squareCounter != 0) return false;
   return true;
-
 };
 
 function isValidBrackets2(string) {
@@ -157,60 +153,41 @@ function isValidBrackets2(string) {
 // console.log(isValidBrackets('(}')) // => false
 // console.log(isValidBrackets('{[]}')) // => true
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // You are given an array of integers. Each integer represents a jump of its value in the array. For instance, the integer 2 represents a jump of 2 indices forward
 // in the array, the integer -3 represents a jump of 3 indices backward in the array. If a jump spills past the array's bounds, it wraps over to the other side. For
 // instance a jump of -1 at the index 0 brings us to the last index in the array. Similarly, a jump of 1 at the last index in the array brings us to index 0. Write a function
 // that returns a boolean representing whether the jumps in the array form a single cycle. A single cycle occurs if, starting at any index in the array and
 // following the jumps, every element is visited exactly once before landing back on the starting index.
 
-
 // to return true...
 
 //each element can only be visited once and you must lang from where you started from.
 
-
 // to return false...
-// visit the same element more than once. 
+// visit the same element more than once.
 // doesnt hit all elements
 // movesMade length has to match sampleInput length as well as all nums in it
 
 // if (counter.length < input.length){
 
-} return true
+// } return true
 
 // for (i=0;)
 // i = array[i] // set the index to the value of current idx within arr
+
+// idx =
 
 // sample input: [2, 3, 1, -4, -4, 2]
 // Sample Output: True
 //
 
 // input: [2, 2, -1]
-// counter: 0
+// counter: arr[0]
 // output: true
-
-
 
 //movesMade = [2]
 //needToLandOn = [start]
-// increment = 
+// increment =
 
 // input: [2, 2, 2]
 // output: true
@@ -221,8 +198,38 @@ function isValidBrackets2(string) {
 // input: [1, 1, 0, 1, 1]
 // output: false
 
+// input: [1,1,1]
+// output: false
 
+function validMove(array) {
+  let idx = 0;
+  let counter = 0;
 
+  while (counter < array.length) {
+    if (counter > 0 && idx === 0) return false;
+    counter++;
+    idx = getCurrentIdx(idx, array); 
+  }
+  return idx === 0
+}
+
+function getCurrentIdx(idx, array) {
+  const jump = array[idx];
+  const nextIdx = (jump + idx) % array.length;
+  return nextIdx >= 0 ? nextIdx : nextIdx + array.length;
+}
+
+// 2 % 6 = 2 
+// 3 % 14 = 3
+// 4 % 15 = 
+
+// sample input: [2, 3, 1, -4, -4, 2]
+// Sample Output: True
+
+console.log(validMove([1, 1, 0, 1, 1]));
+// counter = 1
+
+console.log(validMove([2, 2, 2]));
 
 module.exports = {
   lucasNumberMemo,
