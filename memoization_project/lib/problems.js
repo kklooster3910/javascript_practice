@@ -158,6 +158,10 @@ function isValidBrackets2(string) {
 // instance a jump of -1 at the index 0 brings us to the last index in the array. Similarly, a jump of 1 at the last index in the array brings us to index 0. Write a function
 // that returns a boolean representing whether the jumps in the array form a single cycle. A single cycle occurs if, starting at any index in the array and
 // following the jumps, every element is visited exactly once before landing back on the starting index.
+// sample input: [2, 3, 1, -4, -4, 2]
+// Sample Output: True
+
+
 
 // to return true...
 
@@ -177,8 +181,7 @@ function isValidBrackets2(string) {
 
 // idx =
 
-// sample input: [2, 3, 1, -4, -4, 2]
-// Sample Output: True
+
 //
 
 // input: [2, 2, -1]
