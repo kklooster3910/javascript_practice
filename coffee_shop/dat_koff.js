@@ -92,9 +92,9 @@ const amenities = new Amenities("2 creams", firstOrder);
 console.log("Hello, Welcome to BeanFlicker Cafe, tell me order");
 (function() {
   const secondPromise = new Promise(function(resolve, reject) {
-    setTimeout(() => console.log("."), 100);
-    setTimeout(() => console.log("."), 100);
-    setTimeout(() => resolve(console.log("."), 100));
+    setTimeout(() => console.log("."), 2000);
+    setTimeout(() => console.log("."), 2000);
+    setTimeout(() => resolve(console.log("."), 2000));
   });
   return secondPromise;
 })().then(stuffs => {
