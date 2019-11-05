@@ -83,3 +83,4 @@ Student.prototype.courseLoad = function() {
 // Input: [[1,3],[3,0,1],[2],[0]]
 // Output: false
 // Explanation: We can't enter the room with number 2.
+
