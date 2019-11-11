@@ -35,6 +35,12 @@ Board.DIRS = [
  * Returns the piece at a given [x, y] position,
  * throwing an Error if the position is invalid.
  */
+
+/**
+ * Returns the piece at a given [x, y] position,
+ * throwing an Error if the position is invalid.
+ */
+
 Board.prototype.getPiece = function (pos) {
   let [x, y] = pos;
   if (x < 0 || y < 0 || x > 7 || x > 7) throw error('Not valid pos!');
