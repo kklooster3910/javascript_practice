@@ -64,6 +64,7 @@ Game.prototype.playTurn = function (callback) {
 /**
  * Continues game play, switching turns, until the game is over.
  */
+
 Game.prototype.runLoop = function (overCallback) {
   if (this.board.isOver()) {
     console.log("The game is over!");
